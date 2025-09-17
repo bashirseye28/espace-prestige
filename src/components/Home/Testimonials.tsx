@@ -49,7 +49,7 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-3xl md:text-4xl font-heading font-semibold text-primary mb-12"
+          className="text-3xl md:text-4xl font-heading font-semibold text-[#e3cbfa] mb-12"
         >
           Ils nous font confiance
         </motion.h2>
