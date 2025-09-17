@@ -32,7 +32,7 @@ export default function CallToAction() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
-            href="/contact"
+            href="/demande-devis"
             className="px-6 py-3 bg-accent text-white text-sm font-medium uppercase tracking-wide hover:opacity-90 transition rounded-lg shadow-lg"
           >
             Demander un devis
