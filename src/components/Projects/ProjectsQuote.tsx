@@ -11,7 +11,7 @@ export default function ProjectsQuote() {
         transition={{ duration: 0.8 }}
         className="text-2xl md:text-3xl font-serif italic text-primary max-w-4xl mx-auto"
       >
-        "Chaque projet que nous réalisons est une œuvre d’art, pensée pour durer, inspirée par vos rêves."
+        &ldquo;Chaque projet que nous réalisons est une œuvre d’art, pensée pour durer, inspirée par vos rêves.&rdquo;
       </motion.blockquote>
     </section>
   )
