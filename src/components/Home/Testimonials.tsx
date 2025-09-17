@@ -39,7 +39,7 @@ export default function Testimonials() {
     <section
       className="relative text-text py-24 px-4 sm:px-8 lg:px-24 bg-fixed bg-center bg-cover"
       style={{
-        backgroundImage: `url('https://res.cloudinary.com/dnmoy5wua/image/upload/v1752644125/2356_hmyfdu.jpg')`,
+        backgroundImage: `url('https://res.cloudinary.com/dnmoy5wua/image/upload/v1758109239/blending-futuristic-building-seamlessly-into-desert-landscape_evrd7m.jpg')`,
       }}
     >
       <div className="absolute inset-0 bg-white/10 z-0" />
