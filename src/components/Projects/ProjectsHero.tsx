@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 export default function ProjectsHero() {
   return (
     <section
-      className="relative bg-fixed bg-cover bg-center h-[70vh] flex items-center justify-center text-white px-4 sm:px-8 lg:px-24"
+      className="relative min-h-[70vh] sm:h-[80vh] w-full bg-cover bg-center bg-no-repeat flex items-center justify-center text-white px-4 sm:px-8 lg:px-24"
       style={{
         backgroundImage:
           "url('https://res.cloudinary.com/dnmoy5wua/image/upload/v1752644125/2356_hmyfdu.jpg')",
@@ -20,7 +20,7 @@ export default function ProjectsHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-heading font-bold mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4"
         >
           Nos projets
         </motion.h1>
@@ -29,7 +29,7 @@ export default function ProjectsHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-lg md:text-xl text-white/90 font-body"
+          className="text-base sm:text-lg md:text-xl text-white/90 font-body"
         >
           Une sélection de réalisations qui incarnent notre exigence, notre vision et notre savoir-faire.
         </motion.p>

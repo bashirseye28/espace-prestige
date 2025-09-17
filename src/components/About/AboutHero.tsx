@@ -1,5 +1,3 @@
-// src/components/About/AboutHero.tsx
-
 'use client'
 
 import { motion } from 'framer-motion'
@@ -7,7 +5,7 @@ import { motion } from 'framer-motion'
 export default function AboutHero() {
   return (
     <section
-      className="relative bg-cover bg-center bg-fixed text-white h-[70vh] flex items-center justify-center px-4 sm:px-8 lg:px-24"
+      className="relative min-h-[70vh] sm:h-[80vh] w-full bg-cover bg-center bg-no-repeat text-white flex items-center justify-center px-4 sm:px-8 lg:px-24"
       style={{
         backgroundImage:
           "url('https://res.cloudinary.com/dnmoy5wua/image/upload/v1752644125/2356_hmyfdu.jpg')",
@@ -22,7 +20,7 @@ export default function AboutHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-heading font-bold mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4"
         >
           À propos
         </motion.h1>
@@ -31,7 +29,7 @@ export default function AboutHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-lg md:text-xl text-white/90 font-body"
+          className="text-base sm:text-lg md:text-xl text-white/90 font-body"
         >
           L’excellence au service du bâti, de l’humain et de la ville.
         </motion.p>
