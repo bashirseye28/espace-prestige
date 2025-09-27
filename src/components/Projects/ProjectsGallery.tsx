@@ -101,24 +101,29 @@ export default function ProjectsGallery() {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap justify-center gap-2 mb-10">
-        <select
-          className="sm:hidden px-4 py-2 border rounded-full text-sm text-gray-700"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-        >
-          {categories.map((cat) => (
-            <option key={cat} value={cat}>{cat}</option>
-          ))}
-        </select>
+      <div className="mb-10">
+        <div className="sm:hidden relative w-full max-w-xs mx-auto">
+          <select
+            className="w-full px-4 py-3 border border-gray-300 rounded-full bg-white text-gray-800 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-primary"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute top-3 right-4 text-gray-500">
+            ▼
+          </div>
+        </div>
 
-        <div className="hidden sm:flex gap-2">
+        <div className="hidden sm:flex flex-wrap justify-center gap-2">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition border ${
-                filter === cat ? 'bg-primary text-white' : 'border-gray-300 text-gray-700 hover:bg-gray-100'
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition border shadow-sm ${
+                filter === cat ? 'bg-primary text-white border-primary' : 'border-gray-300 text-gray-700 hover:bg-gray-100'
               }`}
             >
               {cat}
