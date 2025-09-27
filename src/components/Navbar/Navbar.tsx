@@ -30,7 +30,7 @@ export default function Navbar() {
           <Link href="/">
             <Image
               // src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1752637147/logoPrestige_wfuolz.png"
-              src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1758946816/Espace_Prestige_ctey7f.png"
+              src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1758955860/Logo1Espace_Prestige_b8ptjs.png"
               alt="Logo Espace Prestige"
               width={120}
               height={40}
