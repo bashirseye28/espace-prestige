@@ -2,151 +2,192 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
-import { motion } from 'framer-motion'
+import { Dialog, DialogPanel, Transition } from '@headlessui/react'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { motion } from 'framer-motion'
 
-const projects = [
+const projectData = [
   {
-    title: 'Résidence Les Horizons',
+    title: 'Villa contemporaine',
+    category: 'Villas',
     location: 'Dakar, Sénégal',
-    description: 'Immeuble résidentiel haut standing avec vues panoramiques et finitions de luxe.',
-    images: [
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752643278/1176_hnojxq.jpg',
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752644125/2356_hmyfdu.jpg',
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752643547/9832_xguvsp.jpg',
+    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952449/villa1_bz7hy7.jpg',
+    shortDescription: 'Villa haut standing à l’architecture cubique, intégrant des matériaux nobles et de larges baies vitrées pour une luminosité optimale.',
+    fullDescription: 'Conçue pour allier esthétisme moderne et confort haut de gamme, cette villa se distingue par ses volumes épurés, ses brise-soleil en bois et sa piscine à débordement, le tout dans un environnement paysager minimaliste.',
+    gallery: [
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952449/villa1_bz7hy7.jpg',
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952448/villa2_zswhr5.jpg',
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952447/villa3_yaeeq4.jpg',
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952447/villa4_pczvfe.jpg'
     ],
   },
   {
-    title: 'Siège social ATLAS',
-    location: 'Abidjan, Côte d’Ivoire',
-    description: 'Bâtiment administratif moderne intégrant les dernières normes environnementales.',
-    images: [
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752643547/9832_xguvsp.jpg',
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752643278/1176_hnojxq.jpg',
+    title: 'Complexe résidentiel',
+    category: 'Résidentiels',
+    location: 'Saly, Sénégal',
+    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952446/complexes-re%CC%81sidentiels1_qa5m59.jpg',
+    shortDescription: 'Ensemble d’habitations modernes avec finitions soignées, pensé pour le bien-être des résidents.',
+    fullDescription: 'Situé à Saly, ce complexe propose des logements spacieux et élégants, dans un cadre sécurisé et verdoyant, intégrant des matériaux durables et une architecture inspirée du style méditerranéen.',
+    gallery: [
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952446/complexes-re%CC%81sidentiels1_qa5m59.jpg',
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952445/complexes-re%CC%81sidentiels2_dgfgxr.jpg',
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952444/complexes-re%CC%81sidentiels3_iwvtza.jpg'
     ],
   },
   {
-    title: 'Complexe scolaire Élan',
+    title: 'Complexe sportif',
+    category: 'Sportif',
     location: 'Thiès, Sénégal',
-    description: 'Ensemble pédagogique complet alliant ergonomie, durabilité et convivialité.',
-    images: [
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752644125/2356_hmyfdu.jpg',
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752643278/1176_hnojxq.jpg',
+    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/complexes-sportif_nt9kmq.jpg',
+    shortDescription: 'Infrastructure complète pour la pratique de sports collectifs et individuels.',
+    fullDescription: 'Ce centre sportif moderne comprend des terrains multisports, des vestiaires aux normes et des espaces polyvalents pour l’accueil d’événements sportifs ou communautaires, dans un cadre dynamique et accessible.',
+    gallery: [
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/complexes-sportif_nt9kmq.jpg'
     ],
   },
+  {
+    title: 'Centre hôtelier',
+    category: 'Hôtellerie',
+    location: 'Saint-Louis, Sénégal',
+    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/ho%CC%82telier2_fnleen.jpg',
+    shortDescription: 'Projet hôtelier raffiné mêlant tradition et modernité au cœur de Saint-Louis.',
+    fullDescription: 'Inspiré de l’architecture locale, ce centre hôtelier propose des chambres élégantes, des espaces de détente contemporains et une intégration harmonieuse au paysage historique de Saint-Louis, avec une touche de modernité discrète.',
+    gallery: [
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/ho%CC%82telier2_fnleen.jpg',
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/ho%CC%82telier1_geolqm.jpg'
+    ],
+  }
 ]
 
+const categories = ['Tous', 'Villas', 'Résidentiels', 'Sportif', 'Hôtellerie']
+
 export default function ProjectsGallery() {
+  const [filter, setFilter] = useState('Tous')
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
   const [currentImage, setCurrentImage] = useState(0)
 
-  const handleClose = () => {
+  const filteredProjects =
+    filter === 'Tous' ? projectData : projectData.filter(p => p.category === filter)
+
+  const openProject = (index: number) => {
+    setSelectedProject(index)
+    setCurrentImage(0)
+  }
+
+  const closeModal = () => {
     setSelectedProject(null)
     setCurrentImage(0)
   }
 
   const showNext = () => {
     if (selectedProject !== null) {
-      const total = projects[selectedProject].images.length
-      setCurrentImage((currentImage + 1) % total)
+      const gallery = filteredProjects[selectedProject].gallery
+      setCurrentImage((currentImage + 1) % gallery.length)
     }
   }
 
   const showPrev = () => {
     if (selectedProject !== null) {
-      const total = projects[selectedProject].images.length
-      setCurrentImage((currentImage - 1 + total) % total)
+      const gallery = filteredProjects[selectedProject].gallery
+      setCurrentImage((currentImage - 1 + gallery.length) % gallery.length)
     }
   }
 
   return (
-    <section className="bg-white py-28 px-4 sm:px-8 lg:px-24">
-      <div className="max-w-7xl mx-auto text-center mb-20">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl font-heading font-bold text-primary mb-4"
-        >
-          Nos projets récents
-        </motion.h2>
-        <div className="h-1 w-20 mx-auto bg-accent rounded-full mb-6" />
-        <p className="text-muted text-lg max-w-2xl mx-auto">
-          Découvrez quelques-unes de nos réalisations les plus marquantes, entre innovation,
-          exigence technique et esthétisme.
-        </p>
+    <section className="bg-white py-20 px-4 sm:px-8 lg:px-24">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold font-heading text-primary">Nos réalisations</h2>
+        <p className="text-muted mt-2">Filtrez par catégorie pour découvrir nos projets</p>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-        {projects.map((project, index) => (
+      {/* Filters */}
+      <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <select
+          className="sm:hidden px-4 py-2 border rounded-full text-sm text-gray-700"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        >
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
+
+        <div className="hidden sm:flex gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition border ${
+                filter === cat ? 'bg-primary text-white' : 'border-gray-300 text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredProjects.map((project, index) => (
           <motion.div
             key={index}
             whileHover={{ scale: 1.02 }}
-            className="rounded-xl overflow-hidden shadow-card cursor-pointer group"
-            onClick={() => setSelectedProject(index)}
+            className="cursor-pointer rounded-xl overflow-hidden shadow hover:shadow-lg"
+            onClick={() => openProject(index)}
           >
             <Image
-              src={project.images[0]}
+              src={project.image}
               alt={project.title}
               width={600}
               height={400}
-              className="w-full h-64 object-cover group-hover:scale-105 transition-transform"
+              className="w-full h-64 object-cover"
             />
-            <div className="p-4 bg-white">
-              <h3 className="text-xl font-semibold text-primary font-heading">{project.title}</h3>
-              <p className="text-sm text-muted">{project.location}</p>
+            <div className="p-4">
+              <h3 className="text-lg font-semibold font-heading text-primary">{project.title}</h3>
+              <p className="text-sm text-muted italic">{project.location}</p>
+              <p className="text-sm text-gray-600 mt-2">{project.shortDescription}</p>
             </div>
           </motion.div>
         ))}
       </div>
 
+      {/* Modal */}
       <Transition show={selectedProject !== null}>
-        <Dialog onClose={handleClose} className="fixed inset-0 z-50">
+        <Dialog onClose={closeModal} className="fixed inset-0 z-50">
           <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" aria-hidden="true" />
-
           <div className="fixed inset-0 flex items-center justify-center p-4">
             <DialogPanel className="bg-white max-w-4xl w-full rounded-xl overflow-hidden shadow-xl relative">
               {selectedProject !== null && (
                 <div className="relative">
                   <Image
-                    src={projects[selectedProject].images[currentImage]}
-                    alt="Project image"
+                    src={filteredProjects[selectedProject].gallery[currentImage]}
+                    alt="Aperçu projet"
                     width={1200}
                     height={800}
-                    className="w-full h-[500px] object-cover"
+                    className="w-full max-h-[80vh] object-cover"
                   />
-
                   {/* Controls */}
-                  <button
-                    onClick={handleClose}
-                    className="absolute top-4 right-4 bg-white/80 rounded-full p-2 hover:bg-white"
-                  >
+                  <button onClick={closeModal} className="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
                     <X size={20} />
                   </button>
-                  <button
-                    onClick={showPrev}
-                    className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white"
-                  >
+                  <button onClick={showPrev} className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">
                     <ChevronLeft size={20} />
                   </button>
-                  <button
-                    onClick={showNext}
-                    className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white"
-                  >
+                  <button onClick={showNext} className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">
                     <ChevronRight size={20} />
                   </button>
 
-                  {/* Description */}
+                  {/* Project Info */}
                   <div className="p-6">
-                    <h3 className="text-2xl font-heading font-bold text-primary">
-                      {projects[selectedProject].title}
+                    <h3 className="text-2xl font-bold font-heading text-primary mb-1">
+                      {filteredProjects[selectedProject].title}
                     </h3>
-                    <p className="text-muted italic text-sm mb-2">
-                      {projects[selectedProject].location}
+                    <p className="text-sm text-muted italic mb-2">
+                      {filteredProjects[selectedProject].location}
                     </p>
-                    <p className="text-text leading-relaxed">
-                      {projects[selectedProject].description}
+                    <p className="text-gray-700 text-base leading-relaxed">
+                      {filteredProjects[selectedProject].fullDescription}
                     </p>
                   </div>
                 </div>
