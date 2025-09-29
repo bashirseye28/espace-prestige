@@ -16,7 +16,6 @@ export default function HomeHero() {
 
   const mobileBg =
     'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752637631/2149661456_bm2ueg.jpg'
-    // 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752644125/2356_hmyfdu.jpg'
   const desktopBg =
     'https://res.cloudinary.com/dnmoy5wua/image/upload/v1752637631/2149661456_bm2ueg.jpg'
 
@@ -29,6 +28,9 @@ export default function HomeHero() {
       }}
     >
       {/* Overlay */}
+      {/* ✅ Ajout de l'overlay rose/violet */}
+      <div className="absolute inset-0 bg-primary/60 z-0" />
+      
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-0" />
 
       {/* Content */}
