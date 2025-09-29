@@ -22,7 +22,7 @@ const projectData = [
     ],
   },
   {
-    title: 'Complexe résidentiel',
+    title: 'Complexe résidentiel Saly',
     category: 'Résidentiels',
     location: 'Saly, Sénégal',
     image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952446/complexes-re%CC%81sidentiels1_qa5m59.jpg',
@@ -35,20 +35,31 @@ const projectData = [
     ],
   },
   {
-    title: 'Complexe sportif',
-    category: 'Sportif',
-    location: 'Thiès, Sénégal',
-    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/complexes-sportif_nt9kmq.jpg',
-    shortDescription: 'Infrastructure complète pour la pratique de sports collectifs et individuels.',
-    fullDescription: 'Ce centre sportif moderne comprend des terrains multisports, des vestiaires aux normes et des espaces polyvalents pour l’accueil d’événements sportifs ou communautaires, dans un cadre dynamique et accessible.',
+    title: 'Complexe résidentiel Dakar',
+    category: 'Résidentiels',
+    location: 'Dakar, Sénégal',
+    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1759111447/complexes-re%CC%81sidentiels-Dakar_gn6evj.jpg',
+    shortDescription: 'Programme résidentiel contemporain en plein cœur de Dakar.',
+    fullDescription: 'Ce complexe propose des appartements modernes et lumineux, avec espaces verts et finitions de qualité supérieure, conçus pour répondre aux besoins d’une clientèle urbaine exigeante.',
     gallery: [
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/complexes-sportif_nt9kmq.jpg'
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1759111447/complexes-re%CC%81sidentiels-Dakar_gn6evj.jpg'
+    ],
+  },
+  {
+    title: 'Complexe résidentiel Lac Rose',
+    category: 'Résidentiels',
+    location: 'Lac Rose, Sénégal',
+    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1759111447/complexes-re%CC%81sidentielsLacRose_tejifr.jpg',
+    shortDescription: 'Résidence inspirée de l’environnement naturel du Lac Rose.',
+    fullDescription: 'Ce projet intègre des logements modernes avec terrasses panoramiques et espaces communs conviviaux, tout en respectant le cadre exceptionnel du Lac Rose.',
+    gallery: [
+      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1759111447/complexes-re%CC%81sidentielsLacRose_tejifr.jpg'
     ],
   },
   {
     title: 'Centre hôtelier',
     category: 'Hôtellerie',
-    location: 'Saint-Louis, Sénégal',
+    location: 'Saly, Sénégal',
     image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/ho%CC%82telier2_fnleen.jpg',
     shortDescription: 'Projet hôtelier raffiné mêlant tradition et modernité au cœur de Saint-Louis.',
     fullDescription: 'Inspiré de l’architecture locale, ce centre hôtelier propose des chambres élégantes, des espaces de détente contemporains et une intégration harmonieuse au paysage historique de Saint-Louis, avec une touche de modernité discrète.',
@@ -59,7 +70,7 @@ const projectData = [
   }
 ]
 
-const categories = ['Tous', 'Villas', 'Résidentiels', 'Sportif', 'Hôtellerie']
+const categories = ['Tous', 'Villas', 'Résidentiels', 'Hôtellerie']
 
 export default function ProjectsGallery() {
   const [filter, setFilter] = useState('Tous')
@@ -112,9 +123,7 @@ export default function ProjectsGallery() {
               <option key={cat} value={cat}>{cat}</option>
             ))}
           </select>
-          <div className="pointer-events-none absolute top-3 right-4 text-gray-500">
-            ▼
-          </div>
+          <div className="pointer-events-none absolute top-3 right-4 text-gray-500">▼</div>
         </div>
 
         <div className="hidden sm:flex flex-wrap justify-center gap-2">
