@@ -29,7 +29,7 @@ export default function HomeHero() {
     >
       {/* Overlay */}
       {/* ✅ Ajout de l'overlay rose/violet */}
-      <div className="absolute inset-0 bg-primary/60 z-0" />
+      <div className="absolute inset-0 bg-primary/40 z-0" />
       
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50 z-0" />
 
