@@ -1,20 +1,20 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
-import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { href: '/', label: 'Accueil' },
-  { href: '/a-propos', label: 'À propos' },
-  { href: '/projets', label: 'Projets' },
-  { href: '/contact', label: 'Contact' },
-]
+  { href: "/", label: "Accueil" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/projets", label: "Projets" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="absolute top-0 left-0 w-full z-50 transition-all duration-300">
@@ -27,19 +27,18 @@ export default function Navbar() {
           animate={{ rotateY: 0, opacity: 1 }}
           className="flex items-center"
         >
-          <Link href="/">
+          <Link href="/" className="flex items-center">
             <Image
-              // src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1752637147/logoPrestige_wfuolz.png"
               src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1759108388/LogoEP_yhwlcv.png"
               alt="Logo Espace Prestige"
               width={120}
               height={40}
               className="h-auto transition-all duration-300"
             />
+            <span className="hidden md:block text-white text-sm font-semibold tracking-wide ml-2">
+              Espace Prestige
+            </span>
           </Link>
-          <span className="hidden md:block text-white text-sm font-semibold tracking-wide ml-2">
-            Espace Prestige
-          </span>
         </motion.div>
 
         {/* Desktop Nav */}
@@ -81,9 +80,9 @@ export default function Navbar() {
         {isOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0, x: '-100%' }}
+            initial={{ opacity: 0, x: "-100%" }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '-100%' }}
+            exit={{ opacity: 0, x: "-100%" }}
             transition={{ duration: 0.4 }}
             className="fixed inset-0 z-50 bg-[#8F5FBF]/90 backdrop-blur-lg md:hidden"
           >
@@ -121,7 +120,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }
 
 // Note: Ensure you have the necessary dependencies installed for this code to work:

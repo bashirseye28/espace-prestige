@@ -12,7 +12,7 @@ export default function ProjectsHero() {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-primary/60 z-0" />
+      <div className="absolute inset-0 bg-primary/40 z-0" />
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-3xl">

@@ -12,7 +12,7 @@ export default function AboutHero() {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-primary/60 z-0" />
+      <div className="absolute inset-0 bg-primary/40 z-0" />
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl text-center">
