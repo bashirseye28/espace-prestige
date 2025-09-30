@@ -93,7 +93,7 @@ export default function Footer() {
                 <Instagram size={24} />
               </a>
               <a
-                href="https://www.facebook.com/espaceprestige"
+                href="https://www.facebook.com/Espaceprestige.ep/?_rdr"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"

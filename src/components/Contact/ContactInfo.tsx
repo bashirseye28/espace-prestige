@@ -53,7 +53,7 @@ export default function ContactInfo() {
               <Linkedin size={24} />
             </a>
             <a
-              href="https://www.facebook.com/Espaceprestige.ep"
+              href="https://www.facebook.com/Espaceprestige.ep/?_rdr"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
