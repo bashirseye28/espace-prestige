@@ -1,85 +1,91 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
-import { Dialog, DialogPanel, Transition } from '@headlessui/react'
-import { X } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { useState } from "react";
+import Image from "next/image";
+import { Dialog, DialogPanel, Transition } from "@headlessui/react";
+import { X } from "lucide-react";
+import { motion } from "framer-motion";
 
 type Project = {
-  title: string
-  category: string
-  location: string
-  image: string
-  shortDescription: string
-  fullDescription: string
-}
+  title: string;
+  category: string;
+  location: string;
+  image: string;
+  shortDescription: string;
+  fullDescription: string;
+};
 
 const projectData: Project[] = [
   {
-    title: 'Villa contemporaine',
-    category: 'Villas',
-    location: 'Dakar, Sénégal',
-    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952449/villa1_bz7hy7.jpg',
-    shortDescription:
-      'Villa haut standing à l’architecture cubique, intégrant des matériaux nobles et de larges baies vitrées pour une luminosité optimale.',
-    fullDescription:
-      'Conçue pour allier esthétisme moderne et confort haut de gamme, cette villa se distingue par ses volumes épurés, ses brise-soleil en bois et sa piscine à débordement, le tout dans un environnement paysager minimaliste.',
-  },
-  {
-    title: 'Complexe résidentiel Saly',
-    category: 'Résidentiels',
-    location: 'Saly, Sénégal',
-    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952446/complexes-re%CC%81sidentiels1_qa5m59.jpg',
-    shortDescription:
-      'Ensemble d’habitations modernes avec finitions soignées, pensé pour le bien-être des résidents.',
-    fullDescription:
-      'Situé à Saly, ce complexe propose des logements spacieux et élégants, dans un cadre sécurisé et verdoyant, intégrant des matériaux durables et une architecture inspirée du style méditerranéen.',
-  },
-  {
-    title: 'Complexe résidentiel Dakar',
-    category: 'Résidentiels',
-    location: 'Dakar, Sénégal',
+    title: "Villa contemporaine",
+    category: "Villas",
+    location: "Dakar, Sénégal",
     image:
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1759111447/complexes-re%CC%81sidentiels-Dakar_gn6evj.jpg',
-    shortDescription: 'Programme résidentiel contemporain en plein cœur de Dakar.',
-    fullDescription:
-      'Ce complexe propose des appartements modernes et lumineux, avec espaces verts et finitions de qualité supérieure, conçus pour répondre aux besoins d’une clientèle urbaine exigeante.',
-  },
-  {
-    title: 'Complexe résidentiel Lac Rose',
-    category: 'Résidentiels',
-    location: 'Lac Rose, Sénégal',
-    image:
-      'https://res.cloudinary.com/dnmoy5wua/image/upload/v1759111447/complexes-re%CC%81sidentielsLacRose_tejifr.jpg',
-    shortDescription: 'Résidence inspirée de l’environnement naturel du Lac Rose.',
-    fullDescription:
-      'Ce projet intègre des logements modernes avec terrasses panoramiques et espaces communs conviviaux, tout en respectant le cadre exceptionnel du Lac Rose.',
-  },
-  {
-    title: 'Centre hôtelier',
-    category: 'Hôtellerie',
-    location: 'Saint-Louis, Sénégal',
-    image: 'https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/ho%CC%82telier2_fnleen.jpg',
+      "https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952449/villa1_bz7hy7.jpg",
     shortDescription:
-      'Projet hôtelier raffiné mêlant tradition et modernité au cœur de Saint-Louis.',
+      "Villa haut standing à l’architecture cubique, intégrant des matériaux nobles et de larges baies vitrées pour une luminosité optimale.",
     fullDescription:
-      'Inspiré de l’architecture locale, ce centre hôtelier propose des chambres élégantes, des espaces de détente contemporains et une intégration harmonieuse au paysage historique de Saint-Louis, avec une touche de modernité discrète.',
+      "Conçue pour allier esthétisme moderne et confort haut de gamme, cette villa se distingue par ses volumes épurés, ses brise-soleil en bois et sa piscine à débordement, le tout dans un environnement paysager minimaliste.",
   },
-]
+  {
+    title: "Complexe résidentiel Thiès",
+    category: "Résidentiels",
+    location: "Thiès, Sénégal",
+    image:
+      "https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952446/complexes-re%CC%81sidentiels1_qa5m59.jpg",
+    shortDescription:
+      "Ensemble d’habitations modernes avec finitions soignées, pensé pour le bien-être des résidents.",
+    fullDescription:
+      "Situé à Thiès, ce complexe propose des logements spacieux et élégants, dans un cadre sécurisé et verdoyant, intégrant des matériaux durables et une architecture inspirée du style méditerranéen.",
+  },
+  {
+    title: "Complexe résidentiel Dakar",
+    category: "Résidentiels",
+    location: "Dakar, Sénégal",
+    image:
+      "https://res.cloudinary.com/dnmoy5wua/image/upload/v1759111447/complexes-re%CC%81sidentiels-Dakar_gn6evj.jpg",
+    shortDescription:
+      "Programme résidentiel contemporain en plein cœur de Dakar.",
+    fullDescription:
+      "Ce complexe propose des appartements modernes et lumineux, avec espaces verts et finitions de qualité supérieure, conçus pour répondre aux besoins d’une clientèle urbaine exigeante.",
+  },
+  {
+    title: "Complexe résidentiel Lac Rose",
+    category: "Résidentiels",
+    location: "Lac Rose, Sénégal",
+    image:
+      "https://res.cloudinary.com/dnmoy5wua/image/upload/v1759111447/complexes-re%CC%81sidentielsLacRose_tejifr.jpg",
+    shortDescription:
+      "Résidence inspirée de l’environnement naturel du Lac Rose.",
+    fullDescription:
+      "Ce projet intègre des logements modernes avec terrasses panoramiques et espaces communs conviviaux, tout en respectant le cadre exceptionnel du Lac Rose.",
+  },
+  {
+    title: "Centre hôtelier",
+    category: "Hôtellerie",
+    location: "Saint-Louis, Sénégal",
+    image:
+      "https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/ho%CC%82telier2_fnleen.jpg",
+    shortDescription:
+      "Projet hôtelier raffiné mêlant tradition et modernité au cœur de Saint-Louis.",
+    fullDescription:
+      "Inspiré de l’architecture locale, ce centre hôtelier propose des chambres élégantes, des espaces de détente contemporains et une intégration harmonieuse au paysage historique de Saint-Louis, avec une touche de modernité discrète.",
+  },
+];
 
-const categories = ['Tous', 'Villas', 'Résidentiels', 'Hôtellerie']
+const categories = ["Tous", "Villas", "Résidentiels", "Hôtellerie"];
 
 export default function ProjectsGallery() {
-  const [filter, setFilter] = useState('Tous')
-  const [selectedProject, setSelectedProject] = useState<number | null>(null)
+  const [filter, setFilter] = useState("Tous");
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
-  const filteredProjects = filter === 'Tous'
-    ? projectData
-    : projectData.filter(p => p.category === filter)
+  const filteredProjects =
+    filter === "Tous"
+      ? projectData
+      : projectData.filter((p) => p.category === filter);
 
-  const openProject = (index: number) => setSelectedProject(index)
-  const closeModal = () => setSelectedProject(null)
+  const openProject = (index: number) => setSelectedProject(index);
+  const closeModal = () => setSelectedProject(null);
 
   return (
     <section className="bg-white py-20 px-4 sm:px-8 lg:px-24">
@@ -101,10 +107,14 @@ export default function ProjectsGallery() {
             onChange={(e) => setFilter(e.target.value)}
           >
             {categories.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
             ))}
           </select>
-          <div className="pointer-events-none absolute top-3 right-4 text-gray-500">▼</div>
+          <div className="pointer-events-none absolute top-3 right-4 text-gray-500">
+            ▼
+          </div>
         </div>
         <div className="hidden sm:flex flex-wrap justify-center gap-2">
           {categories.map((cat) => (
@@ -113,8 +123,8 @@ export default function ProjectsGallery() {
               onClick={() => setFilter(cat)}
               className={`px-5 py-2.5 rounded-full text-sm font-medium transition border shadow-sm ${
                 filter === cat
-                  ? 'bg-primary text-white border-primary'
-                  : 'border-gray-300 text-gray-700 hover:bg-gray-100'
+                  ? "bg-primary text-white border-primary"
+                  : "border-gray-300 text-gray-700 hover:bg-gray-100"
               }`}
             >
               {cat}
@@ -140,9 +150,13 @@ export default function ProjectsGallery() {
               className="w-full h-64 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-lg font-semibold font-heading text-primary">{project.title}</h3>
+              <h3 className="text-lg font-semibold font-heading text-primary">
+                {project.title}
+              </h3>
               <p className="text-sm text-muted italic">{project.location}</p>
-              <p className="text-sm text-gray-600 mt-2">{project.shortDescription}</p>
+              <p className="text-sm text-gray-600 mt-2">
+                {project.shortDescription}
+              </p>
             </div>
           </motion.div>
         ))}
@@ -151,7 +165,10 @@ export default function ProjectsGallery() {
       {/* Modal */}
       <Transition show={selectedProject !== null}>
         <Dialog onClose={closeModal} className="fixed inset-0 z-50">
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" aria-hidden="true" />
+          <div
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+            aria-hidden="true"
+          />
           <div className="fixed inset-0 flex items-center justify-center p-4">
             <DialogPanel className="bg-white max-w-4xl w-full rounded-xl overflow-hidden shadow-xl relative">
               {selectedProject !== null && (
@@ -163,7 +180,10 @@ export default function ProjectsGallery() {
                     height={800}
                     className="w-full max-h-[80vh] object-cover"
                   />
-                  <button onClick={closeModal} className="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
+                  <button
+                    onClick={closeModal}
+                    className="absolute top-4 right-4 bg-white p-2 rounded-full shadow"
+                  >
                     <X size={20} />
                   </button>
 
@@ -186,5 +206,5 @@ export default function ProjectsGallery() {
         </Dialog>
       </Transition>
     </section>
-  )
+  );
 }

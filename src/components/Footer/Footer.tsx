@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Mail, Phone, MapPin, Instagram, Linkedin, Facebook, ArrowUp } from 'lucide-react'
+import {
+  Mail,
+  MapPin,
+  Instagram,
+  Facebook,
+  ArrowUp,
+} from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Footer() {
@@ -12,7 +18,6 @@ export default function Footer() {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300)
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -23,29 +28,23 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-primary text-white pt-16 pb-8 mt-24 relative z-10">
+      <footer className="bg-primary text-white pt-20 pb-10 mt-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-24 grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-heading mb-4">Contact</h3>
-            <ul className="space-y-3 text-sm text-white/90">
-              <li className="flex items-start gap-2">
+            <h3 className="text-lg font-heading mb-6 uppercase tracking-wide">Nous contacter</h3>
+            <ul className="space-y-4 text-sm text-white/90">
+              <li className="flex items-start gap-3">
                 <MapPin size={18} className="mt-0.5" />
-                <span>123 Rue de l’Excellence, Paris</span>
+                <span>Dakar, Sénégal</span>
               </li>
-              <li className="flex items-start gap-2">
-                <Phone size={18} className="mt-0.5" />
-                <a href="tel:+33123456789" className="hover:text-accent transition">
-                  +33 1 23 45 67 89
-                </a>
-              </li>
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-3">
                 <Mail size={18} className="mt-0.5" />
                 <a
-                  href="mailto:contact@espaceprestige.com"
+                  href="mailto:contact@espaceprestigesenegal.com"
                   className="hover:text-accent transition"
                 >
-                  contact@espaceprestige.com
+                  contact@espaceprestigesenegal.com
                 </a>
               </li>
             </ul>
@@ -53,8 +52,8 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-lg font-heading mb-4">Navigation</h3>
-            <ul className="space-y-3 text-sm text-white/90">
+            <h3 className="text-lg font-heading mb-6 uppercase tracking-wide">Navigation</h3>
+            <ul className="space-y-4 text-sm text-white/90">
               <li>
                 <Link href="/" className="hover:text-accent transition">Accueil</Link>
               </li>
@@ -72,17 +71,8 @@ export default function Footer() {
 
           {/* Social Media */}
           <div>
-            <h3 className="text-lg font-heading mb-4">Suivez-nous</h3>
-            <div className="flex items-center gap-5">
-              {/* <a
-                href="https://www.linkedin.com/company/espaceprestige"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="hover:text-accent transition"
-              >
-                <Linkedin size={24} />
-              </a> */}
+            <h3 className="text-lg font-heading mb-6 uppercase tracking-wide">Réseaux sociaux</h3>
+            <div className="flex items-center gap-6">
               <a
                 href="https://www.instagram.com/espaceprestige.ep/"
                 target="_blank"
@@ -106,7 +96,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/20 mt-10 pt-6 px-4 text-sm text-white/60 flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
+        <div className="border-t border-white/20 mt-12 pt-6 px-4 text-sm text-white/60 flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
           <p>© {new Date().getFullYear()} Espace Prestige. Tous droits réservés.</p>
         </div>
       </footer>

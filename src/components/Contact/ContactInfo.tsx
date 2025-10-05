@@ -33,7 +33,7 @@ export default function ContactInfo() {
               <div className="bg-primary/10 text-primary p-3 rounded-full">
                 <MapPin size={22} />
               </div>
-              <span>Zone Villa, Dakar, Sénégal</span>
+              <span>Dakar, Sénégal</span>
             </li>
             <li className="flex items-center gap-4">
               <div className="bg-primary/10 text-primary p-3 rounded-full">
@@ -43,7 +43,7 @@ export default function ContactInfo() {
                 href="mailto:contact.espaceprestige@gmail.com"
                 className="hover:text-accent transition"
               >
-                contact.espaceprestige@gmail.com
+                contact@espaceprestigesenegal.com
               </a>
             </li>
           </ul>

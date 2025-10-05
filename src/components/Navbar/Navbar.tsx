@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,11 +15,22 @@ const navLinks = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 transition-all duration-300">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-8 lg:px-24 py-4">
-        {/* Logo + Title */}
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-primary/90 backdrop-blur-md shadow" : "bg-transparent"
+      }`}
+    >
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-24 py-4">
+        {/* Logo */}
         <motion.div
           whileHover={{ rotate: [0, -3, 3, 0] }}
           transition={{ duration: 0.6 }}
@@ -31,9 +42,10 @@ export default function Navbar() {
             <Image
               src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1759108388/LogoEP_yhwlcv.png"
               alt="Logo Espace Prestige"
-              width={120}
+              width={100}
               height={40}
-              className="h-auto transition-all duration-300"
+              className="h-auto w-20 sm:w-24 transition-all"
+              priority
             />
             <span className="hidden md:block text-white text-sm font-semibold tracking-wide ml-2">
               Espace Prestige
@@ -57,7 +69,7 @@ export default function Navbar() {
 
           <Link
             href="/demande-devis"
-            className="ml-6 px-5 py-2 bg-accent text-white uppercase text-sm hover:opacity-90 transition"
+            className="ml-6 px-5 py-2 bg-accent text-white uppercase text-sm hover:opacity-90 transition rounded-md"
           >
             Demander un devis
           </Link>
@@ -68,7 +80,7 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(true)}
             className="text-white"
-            aria-label="Menu"
+            aria-label="Ouvrir menu"
           >
             <Menu size={26} />
           </button>
@@ -78,49 +90,50 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <motion.aside
             key="mobile-menu"
-            initial={{ opacity: 0, x: "-100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "-100%" }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-50 bg-[#8F5FBF]/90 backdrop-blur-lg md:hidden"
+            initial={{ x: "-100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: "-100%", opacity: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed inset-0 z-50 bg-[#8F5FBF]/95 backdrop-blur-2xl px-6 pt-8 pb-10 flex flex-col justify-start items-start space-y-8 text-white md:hidden"
           >
-            <div className="flex justify-end px-6 py-4">
+            {/* Close Button */}
+            <div className="w-full flex justify-end">
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-white"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
                 aria-label="Fermer"
               >
-                <X size={26} />
+                <X size={24} />
               </button>
             </div>
 
-            <div className="flex flex-col gap-6 px-6 mt-6 text-left text-base uppercase font-heading tracking-wide text-white">
+            {/* Navigation Links */}
+            <nav className="flex flex-col w-full space-y-5 text-base font-heading uppercase tracking-wider">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="hover:text-primary transition"
+                  className="block text-white/90 hover:text-white transition text-lg"
                 >
                   {link.label}
                 </Link>
               ))}
+            </nav>
 
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="mt-8 px-5 py-3 bg-primary text-white text-sm font-medium uppercase tracking-wide hover:bg-white hover:text-primary transition w-full text-center"
-              >
-                Demander un devis
-              </Link>
-            </div>
-          </motion.div>
+            {/* CTA */}
+            <Link
+              href="/contact"
+              onClick={() => setIsOpen(false)}
+              className="mt-6 w-full bg-white text-primary text-center py-3 rounded-xl font-semibold uppercase tracking-wide hover:bg-primary hover:text-white transition"
+            >
+              Demander un devis
+            </Link>
+          </motion.aside>
         )}
       </AnimatePresence>
     </header>
   );
 }
-
-// Note: Ensure you have the necessary dependencies installed for this code to work:
