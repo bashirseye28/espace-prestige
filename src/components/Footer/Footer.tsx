@@ -74,7 +74,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-heading mb-4">Suivez-nous</h3>
             <div className="flex items-center gap-5">
-              <a
+              {/* <a
                 href="https://www.linkedin.com/company/espaceprestige"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -82,7 +82,7 @@ export default function Footer() {
                 className="hover:text-accent transition"
               >
                 <Linkedin size={24} />
-              </a>
+              </a> */}
               <a
                 href="https://www.instagram.com/espaceprestige.ep/"
                 target="_blank"

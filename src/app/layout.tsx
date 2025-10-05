@@ -1,5 +1,5 @@
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Poppins, Inter, Open_Sans } from 'next/font/google'
 import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
@@ -24,7 +24,12 @@ const openSans = Open_Sans({
   display: 'swap',
 })
 
-// Metadata
+// ✅ Viewport config (moved out of metadata block)
+export const viewport: Viewport = {
+  themeColor: '#5F2C91',
+}
+
+// ✅ Metadata
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.espaceprestige.com'),
   title: {
@@ -83,7 +88,6 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
-  themeColor: '#5F2C91',
   category: 'Architecture, Construction, Immobilier',
 }
 
