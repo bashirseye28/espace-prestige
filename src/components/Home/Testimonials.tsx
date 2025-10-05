@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { motion } from 'framer-motion'
 import { Quote } from 'lucide-react'
@@ -24,14 +24,16 @@ const testimonials = [
 export default function TestimonialsSection() {
   return (
     <section
-      className="relative py-32 px-4 sm:px-8 lg:px-24 text-white bg-fixed bg-center bg-cover"
+      className="relative py-32 px-4 sm:px-8 lg:px-24 text-white bg-fixed bg-center bg-cover bg-no-repeat"
       style={{
         backgroundImage:
           "url('https://res.cloudinary.com/dnmoy5wua/image/upload/v1752644125/2356_hmyfdu.jpg')",
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center 30%',
       }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/80 to-black/70 backdrop-blur-lg z-0" />
+      {/* Overlay plus clair */}
+      <div className="absolute inset-0 bg-black/40 z-0 backdrop-blur-sm" />
 
       {/* Heading */}
       <div className="relative z-10 max-w-4xl mx-auto text-center mb-20">
@@ -39,7 +41,7 @@ export default function TestimonialsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl font-heading font-bold text-white"
+          className="text-3xl md:text-5xl font-heading font-bold text-[#8F5FBF]"
         >
           Ce que disent nos clients
         </motion.h2>
@@ -47,7 +49,7 @@ export default function TestimonialsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-muted mt-4 max-w-2xl mx-auto text-base md:text-lg"
+          className="text-muted mt-4 max-w-2xl mx-auto text-white md:text-lg"
         >
           Chaque témoignage reflète notre engagement envers l’excellence et la satisfaction.
         </motion.p>
