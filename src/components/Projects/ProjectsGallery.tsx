@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { Dialog, DialogPanel, Transition } from '@headlessui/react'
-import { ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 type Project = {
@@ -13,7 +13,6 @@ type Project = {
   image: string
   shortDescription: string
   fullDescription: string
-  gallery: string[]
 }
 
 const projectData: Project[] = [
@@ -56,7 +55,6 @@ const projectData: Project[] = [
     shortDescription: 'Résidence inspirée de l’environnement naturel du Lac Rose.',
     fullDescription:
       'Ce projet intègre des logements modernes avec terrasses panoramiques et espaces communs conviviaux, tout en respectant le cadre exceptionnel du Lac Rose.',
- 
   },
   {
     title: 'Centre hôtelier',
@@ -67,7 +65,6 @@ const projectData: Project[] = [
       'Projet hôtelier raffiné mêlant tradition et modernité au cœur de Saint-Louis.',
     fullDescription:
       'Inspiré de l’architecture locale, ce centre hôtelier propose des chambres élégantes, des espaces de détente contemporains et une intégration harmonieuse au paysage historique de Saint-Louis, avec une touche de modernité discrète.',
-
   },
 ]
 
@@ -76,35 +73,13 @@ const categories = ['Tous', 'Villas', 'Résidentiels', 'Hôtellerie']
 export default function ProjectsGallery() {
   const [filter, setFilter] = useState('Tous')
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
-  const [currentImage, setCurrentImage] = useState(0)
 
   const filteredProjects = filter === 'Tous'
     ? projectData
     : projectData.filter(p => p.category === filter)
 
-  const openProject = (index: number) => {
-    setSelectedProject(index)
-    setCurrentImage(0)
-  }
-
-  const closeModal = () => {
-    setSelectedProject(null)
-    setCurrentImage(0)
-  }
-
-  const showNext = () => {
-    if (selectedProject !== null) {
-      const gallery = filteredProjects[selectedProject].gallery
-      setCurrentImage((currentImage + 1) % gallery.length)
-    }
-  }
-
-  const showPrev = () => {
-    if (selectedProject !== null) {
-      const gallery = filteredProjects[selectedProject].gallery
-      setCurrentImage((currentImage - 1 + gallery.length) % gallery.length)
-    }
-  }
+  const openProject = (index: number) => setSelectedProject(index)
+  const closeModal = () => setSelectedProject(null)
 
   return (
     <section className="bg-white py-20 px-4 sm:px-8 lg:px-24">
@@ -182,21 +157,14 @@ export default function ProjectsGallery() {
               {selectedProject !== null && (
                 <div className="relative">
                   <Image
-                    src={filteredProjects[selectedProject].gallery[currentImage]}
+                    src={filteredProjects[selectedProject].image}
                     alt="Aperçu projet"
                     width={1200}
                     height={800}
                     className="w-full max-h-[80vh] object-cover"
                   />
-                  {/* Controls */}
                   <button onClick={closeModal} className="absolute top-4 right-4 bg-white p-2 rounded-full shadow">
                     <X size={20} />
-                  </button>
-                  <button onClick={showPrev} className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">
-                    <ChevronLeft size={20} />
-                  </button>
-                  <button onClick={showNext} className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">
-                    <ChevronRight size={20} />
                   </button>
 
                   {/* Project Info */}
