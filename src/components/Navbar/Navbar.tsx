@@ -40,7 +40,7 @@ export default function Navbar() {
         >
           <Link href="/" className="flex items-center">
             <Image
-              src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1759108388/LogoEP_yhwlcv.png"
+              src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1759693579/Espace_Prestige_m5ejjr.png"
               alt="Logo Espace Prestige"
               width={100}
               height={40}
