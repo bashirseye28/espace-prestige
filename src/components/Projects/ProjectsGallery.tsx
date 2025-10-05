@@ -63,13 +63,13 @@ const projectData: Project[] = [
   {
     title: "Centre hôtelier",
     category: "Hôtellerie",
-    location: "Saint-Louis, Sénégal",
+    location: "Saly, Sénégal",
     image:
       "https://res.cloudinary.com/dnmoy5wua/image/upload/v1758952443/ho%CC%82telier2_fnleen.jpg",
     shortDescription:
-      "Projet hôtelier raffiné mêlant tradition et modernité au cœur de Saint-Louis.",
+      "Projet hôtelier raffiné mêlant tradition et modernité au cœur de Saly.",
     fullDescription:
-      "Inspiré de l’architecture locale, ce centre hôtelier propose des chambres élégantes, des espaces de détente contemporains et une intégration harmonieuse au paysage historique de Saint-Louis, avec une touche de modernité discrète.",
+      "Inspiré de l’architecture locale, ce centre hôtelier propose des chambres élégantes, des espaces de détente contemporains et une intégration harmonieuse au paysage historique de Saly, avec une touche de modernité discrète.",
   },
 ];
 
