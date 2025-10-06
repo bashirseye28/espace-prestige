@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: 'Espace Prestige | Excellence en architecture et construction',
     description:
       'Expertise en architecture, construction et urbanisme. Une équipe passionnée au service de vos projets les plus ambitieux.',
-    url: 'https://www.espaceprestige.com',
+    url: 'https://www.espaceprestigesenegal.com',
     siteName: 'Espace Prestige',
     images: [
       {
