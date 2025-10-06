@@ -15,10 +15,12 @@ export async function POST(req: Request) {
   })
 
   const htmlMessage = `
-    <p><strong>Nom :</strong> ${name}</p>
-    <p><strong>Email :</strong> ${email}</p>
-    <p><strong>Sujet :</strong> ${subject}</p>
-    <p><strong>Message :</strong><br />${message}</p>
+    <div style="font-family: Inter, sans-serif; font-size: 14px; color: #222;">
+      <p><strong>Nom :</strong> ${name}</p>
+      <p><strong>Email :</strong> ${email}</p>
+      <p><strong>Sujet :</strong> ${subject}</p>
+      <p><strong>Message :</strong><br />${message}</p>
+    </div>
   `
 
   const userReplyHtml = `
@@ -45,15 +47,15 @@ export async function POST(req: Request) {
 
         <div style="margin-top: 12px;">
           <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="margin-right: 8px;">📍</span>
+            <img src="https://www.svgrepo.com/show/501879/location-pin.svg" width="16" style="margin-right: 8px;" />
             <span>Dakar, Sénégal</span>
           </div>
           <div style="display: flex; align-items: center; margin-bottom: 8px;">
-            <span style="margin-right: 8px;">✉️</span>
+            <img src="https://www.svgrepo.com/show/501892/mail.svg" width="16" style="margin-right: 8px;" />
             <a href="mailto:contact@espaceprestigesenegal.com" style="color: #5F2C91; text-decoration: none;">contact@espaceprestigesenegal.com</a>
           </div>
           <div style="display: flex; align-items: center;">
-            <span style="margin-right: 8px;">🌐</span>
+            <img src="https://www.svgrepo.com/show/473768/globe.svg" width="16" style="margin-right: 8px;" />
             <a href="https://www.espaceprestigesenegal.com" style="color: #5F2C91; text-decoration: none;">www.espaceprestigesenegal.com</a>
           </div>
         </div>

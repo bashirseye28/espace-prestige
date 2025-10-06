@@ -4,15 +4,21 @@ import nodemailer from 'nodemailer'
 export async function POST(req: Request) {
   const data = await req.formData()
 
-  const name = data.get('name') as string
-  const email = data.get('email') as string
-  const phone = data.get('phone') as string
-  const project = data.get('project') as string
-  const budget = data.get('budget') as string
-  const message = data.get('message') as string
+  const name = (data.get('name') as string) || ''
+  const email = (data.get('email') as string) || ''
+  const phone = (data.get('phone') as string) || ''
+  const project = (data.get('project') as string) || ''
+  const budget = (data.get('budget') as string) || ''
+  const message = (data.get('message') as string) || ''
   const file = data.get('file') as File | null
 
-  const fileBuffer = file ? Buffer.from(await file.arrayBuffer()) : null
+  // si pas de fichier, fileBuffer et filename restent undefined
+  let fileBuffer: Buffer | undefined
+  let fileName: string | undefined
+  if (file) {
+    fileBuffer = Buffer.from(await file.arrayBuffer())
+    fileName = file.name
+  }
 
   const transporter = nodemailer.createTransport({
     host: process.env.ZEMAIL_HOST,
@@ -29,6 +35,7 @@ export async function POST(req: Request) {
     <p><strong>Email :</strong> ${email}</p>
     <p><strong>Téléphone :</strong> ${phone}</p>
     <p><strong>Type de projet :</strong> ${project}</p>
+    <p><strong>Budget estimé :</strong> ${budget}</p>
     <p><strong>Message :</strong><br/>${message}</p>
   `
 
@@ -48,23 +55,24 @@ export async function POST(req: Request) {
   `
 
   try {
-    // Mail à vous
+    // Mail à l’équipe
     await transporter.sendMail({
       from: `"Espace Prestige" <${process.env.ZEMAIL_USER}>`,
       to: process.env.ZEMAIL_TO,
       subject: `Nouvelle demande de devis : ${project}`,
       html,
-      attachments: fileBuffer
-        ? [
-            {
-              filename: file.name,
-              content: fileBuffer,
-            },
-          ]
-        : [],
+      attachments:
+        fileBuffer && fileName
+          ? [
+              {
+                filename: fileName,
+                content: fileBuffer,
+              },
+            ]
+          : [],
     })
 
-    // Mail à l'utilisateur
+    // Mail à l’utilisateur
     await transporter.sendMail({
       from: `"Espace Prestige" <${process.env.ZEMAIL_USER}>`,
       to: email,

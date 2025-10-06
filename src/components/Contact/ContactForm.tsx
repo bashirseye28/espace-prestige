@@ -50,7 +50,7 @@ export default function ContactForm() {
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-muted mb-1">
-                Nom complet
+                Votre nom
               </label>
               <input
                 id="name"

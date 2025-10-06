@@ -21,18 +21,16 @@ const testimonials = [
   },
 ]
 
-export default function TestimonialsSection() {
+export default function Testimonials() {
   return (
     <section
       className="relative py-32 px-4 sm:px-8 lg:px-24 text-white bg-fixed bg-center bg-cover bg-no-repeat"
       style={{
         backgroundImage:
           "url('https://res.cloudinary.com/dnmoy5wua/image/upload/v1752644125/2356_hmyfdu.jpg')",
-        backgroundAttachment: 'fixed',
-        backgroundPosition: 'center 30%',
       }}
     >
-      {/* Overlay plus clair */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black/40 z-0 backdrop-blur-sm" />
 
       {/* Heading */}
@@ -41,7 +39,7 @@ export default function TestimonialsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl font-heading font-bold text-[#8F5FBF]"
+          className="text-3xl md:text-5xl font-heading font-bold text-accent"
         >
           Ce que disent nos clients
         </motion.h2>
@@ -49,7 +47,7 @@ export default function TestimonialsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-muted mt-4 max-w-2xl mx-auto text-white md:text-lg"
+          className="mt-4 max-w-2xl mx-auto text-white/90 md:text-lg"
         >
           Chaque témoignage reflète notre engagement envers l’excellence et la satisfaction.
         </motion.p>
@@ -64,12 +62,10 @@ export default function TestimonialsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2, duration: 0.7 }}
             viewport={{ once: true }}
-            className="bg-white/95 text-gray-900 rounded-3xl shadow-2xl p-8 flex flex-col justify-between border border-gray-100"
+            className="bg-white text-gray-900 rounded-3xl shadow-xl p-8 flex flex-col justify-between border border-gray-200"
           >
             <Quote className="text-primary w-10 h-10 mb-4" />
-            <p className="text-base leading-relaxed italic mb-6">
-              “{testimonial.quote}”
-            </p>
+            <p className="text-base leading-relaxed italic mb-6">“{testimonial.quote}”</p>
             <div className="text-sm font-bold text-primary uppercase tracking-wider mt-auto">
               — {testimonial.name}
             </div>

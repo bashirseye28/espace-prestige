@@ -2,26 +2,26 @@
 
 import { motion } from 'framer-motion'
 
-export default function WhoWeAre() {
-  const pillars = [
-    {
-      title: 'Notre vision',
-      text: 'Créer des espaces harmonieux, durables et fonctionnels, au service de l’esthétique et de la performance.',
-    },
-    {
-      title: 'Notre expertise',
-      text: 'Une équipe pluridisciplinaire dotée d’une solide expérience en architecture, ingénierie et urbanisme.',
-    },
-    {
-      title: 'Notre engagement',
-      text: 'Un accompagnement rigoureux à chaque étape du projet, avec une écoute attentive et un souci du détail.',
-    },
-  ]
+const pillars = [
+  {
+    title: 'Notre vision',
+    text: 'Créer des espaces harmonieux, durables et fonctionnels, au service de l’esthétique et de la performance.',
+  },
+  {
+    title: 'Notre expertise',
+    text: 'Une équipe pluridisciplinaire dotée d’une solide expérience en architecture, ingénierie et urbanisme.',
+  },
+  {
+    title: 'Notre engagement',
+    text: 'Un accompagnement rigoureux à chaque étape du projet, avec une écoute attentive et un souci du détail.',
+  },
+]
 
+export default function WhoWeAre() {
   return (
     <section className="bg-white text-text py-20 px-4 sm:px-8 lg:px-24">
       <div className="max-w-7xl mx-auto">
-        {/* Section Title */}
+        {/* Titre de section */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function WhoWeAre() {
           l’architecture, du génie civil et de l’aménagement urbain pour sublimer chaque espace.
         </motion.p>
 
-        {/* Pillars */}
+        {/* 3 Piliers */}
         <div className="grid md:grid-cols-3 gap-8">
           {pillars.map((item, index) => (
             <motion.div
