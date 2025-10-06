@@ -24,8 +24,8 @@ export default function DevisClosingSection() {
 
       <div className="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto text-center">
         {[ 
-          { icon: Timer, title: '+4 ans', desc: 'd’expérience dans le secteur' },
-          { icon: Users, title: '12 experts', desc: 'pluridisciplinaires à votre service' },
+          { icon: Timer, title: '+3 ans', desc: 'd’expérience dans le secteur' },
+          { icon: Users, title: '8 experts', desc: 'pluridisciplinaires à votre service' },
           { icon: Star, title: 'Projets premium', desc: 'sur-mesure et haut de gamme' },
           { icon: CheckCircle, title: 'Accompagnement', desc: 'humain & réactif' }
         ].map((item, index) => (
