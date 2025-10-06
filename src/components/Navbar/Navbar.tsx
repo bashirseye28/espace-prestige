@@ -30,7 +30,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-24 py-4">
-        {/* Logo + Texte */}
+        {/* Logo + Texte animé */}
         <motion.div
           whileHover={{ rotate: [0, -3, 3, 0] }}
           transition={{ duration: 0.6 }}
@@ -47,10 +47,16 @@ export default function Navbar() {
               className="h-auto w-16 sm:w-20 transition-all"
               priority
             />
-            {/* Texte visible sur toutes tailles */}
-            <span className="text-white uppercase text-sm sm:text-base md:text-lg font-bold tracking-wide ml-2 hover:text-accent transition">
+            {/* Titre animé */}
+            <motion.span
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              className="text-white uppercase text-sm sm:text-base md:text-lg font-bold tracking-wide ml-2 hover:text-accent transition"
+            >
               Espace Prestige
-            </span>
+            </motion.span>
           </Link>
         </motion.div>
 
@@ -120,9 +126,13 @@ export default function Navbar() {
                 className="h-auto w-14 transition-all"
                 priority
               />
-              <span className="text-white uppercase text-lg font-bold tracking-wide">
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.5 }}
+                className="text-white uppercase text-lg font-bold tracking-wide"
+              >
                 Espace Prestige
-              </span>
+              </motion.span>
             </div>
 
             {/* Navigation Links */}
