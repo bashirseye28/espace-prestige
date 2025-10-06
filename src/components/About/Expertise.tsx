@@ -25,9 +25,9 @@ const services = [
 ]
 
 const stats = [
-  { value: 4, label: 'Années d’expérience' },
+  { value: 3, label: 'Années d’expérience' },
   { value: 25, label: 'Projets livrés' },
-  { value: 12, label: 'Experts passionnés' },
+  { value: 8, label: 'Experts passionnés' },
 ]
 
 export default function Expertise() {
