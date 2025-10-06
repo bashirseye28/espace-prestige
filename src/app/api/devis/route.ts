@@ -39,19 +39,19 @@ export async function POST(req: Request) {
     <p><strong>Message :</strong><br/>${message}</p>
   `
 
-  const confirmationHtml = `
-    <div style="font-family: Inter, sans-serif; padding: 24px; border: 1px solid #e5e7eb; border-radius: 12px; max-width: 600px; margin: auto;">
-      <div style="text-align: center; margin-bottom: 24px;">
-        <img src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1759700891/NEWEspace_Prestige_pth0mv.png" alt="Espace Prestige Logo" style="max-height: 60px;" />
-      </div>
-      <h2 style="color: #5F2C91; font-family: Poppins, sans-serif; font-size: 20px; text-align: center; margin-bottom: 16px;">
-        Demande de devis reçue
-      </h2>
-      <p style="text-align: center;">Merci pour votre demande. Nous vous répondrons dans les plus brefs délais.</p>
-      <hr style="margin: 24px 0; border: none; border-top: 1px solid #e5e7eb;" />
-      <p style="margin: 0;"><strong>Groupe Espace Prestige</strong><br />Fondatrice & Designer principale<br />Espace Prestige</p>
-      <p style="margin: 0; color: #5F2C91;">contact@espaceprestigesenegal.com</p>
+const confirmationHtml = `
+  <div style="font-family: Inter, sans-serif; padding: 24px; border: 1px solid #e5e7eb; border-radius: 12px; max-width: 600px; margin: auto;">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <img src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1759700891/NEWEspace_Prestige_pth0mv.png" alt="Espace Prestige Logo" style="max-height: 60px;" />
     </div>
+    <h2 style="color: #5F2C91; font-family: Poppins, sans-serif; font-size: 20px; text-align: center; margin-bottom: 16px;">
+      Demande de devis reçue
+    </h2>
+    <p style="text-align: center;">Merci pour votre demande. Nous vous répondrons dans les plus brefs délais.</p>
+    <hr style="margin: 24px 0; border: none; border-top: 1px solid #e5e7eb;" />
+    <p style="margin: 0;"><strong>Groupe Espace Prestige</strong><br />Architecture & Construction haut de gamme</p>
+    <p style="margin: 0; color: #5F2C91;">contact@espaceprestigesenegal.com</p>
+  </div>
   `
 
   try {
