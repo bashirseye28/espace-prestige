@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@types/node": "20.19.19",
+    "@types/nodemailer": "^7.0.2",
     "@types/react": "18.3.25",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
