@@ -125,7 +125,7 @@ export default function Navbar() {
 
             {/* CTA */}
             <Link
-              href="/contact"
+              href="/demande-devis"
               onClick={() => setIsOpen(false)}
               className="mt-6 w-full bg-white text-primary text-center py-3 rounded-xl font-semibold uppercase tracking-wide hover:bg-primary hover:text-white transition"
             >

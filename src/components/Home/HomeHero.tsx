@@ -72,7 +72,7 @@ export default function HomeHero() {
             Nos réalisations
           </Link>
           <Link
-            href="/contact"
+            href="/demande-devis"
             className="px-6 py-3 border border-white text-white text-sm font-medium uppercase tracking-wide hover:bg-white hover:text-primary transition rounded-xl"
           >
             Demander un devis
