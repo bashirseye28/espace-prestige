@@ -30,7 +30,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-24 py-4">
-        {/* Logo */}
+        {/* Logo + Texte */}
         <motion.div
           whileHover={{ rotate: [0, -3, 3, 0] }}
           transition={{ duration: 0.6 }}
@@ -44,10 +44,11 @@ export default function Navbar() {
               alt="Logo Espace Prestige"
               width={100}
               height={40}
-              className="h-auto w-20 sm:w-24 transition-all"
+              className="h-auto w-16 sm:w-20 transition-all"
               priority
             />
-            <span className="hidden md:block text-white text-sm font-semibold tracking-wide ml-2">
+            {/* Texte visible sur toutes tailles */}
+            <span className="text-white uppercase text-sm sm:text-base md:text-lg font-bold tracking-wide ml-2 hover:text-accent transition">
               Espace Prestige
             </span>
           </Link>
@@ -109,8 +110,23 @@ export default function Navbar() {
               </button>
             </div>
 
+            {/* Logo + Texte dans menu mobile */}
+            <div className="flex items-center space-x-3">
+              <Image
+                src="https://res.cloudinary.com/dnmoy5wua/image/upload/v1759700891/NEWEspace_Prestige_pth0mv.png"
+                alt="Logo Espace Prestige"
+                width={70}
+                height={30}
+                className="h-auto w-14 transition-all"
+                priority
+              />
+              <span className="text-white uppercase text-lg font-bold tracking-wide">
+                Espace Prestige
+              </span>
+            </div>
+
             {/* Navigation Links */}
-            <nav className="flex flex-col w-full space-y-5 text-base font-heading uppercase tracking-wider">
+            <nav className="flex flex-col w-full space-y-5 text-base font-heading uppercase tracking-wider mt-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
