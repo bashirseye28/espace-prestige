@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       </h2>
       <p style="text-align: center;">Merci pour votre demande. Nous vous répondrons dans les plus brefs délais.</p>
       <hr style="margin: 24px 0; border: none; border-top: 1px solid #e5e7eb;" />
-      <p style="margin: 0;"><strong>Amina</strong><br />Fondatrice & Designer principale<br />Espace Prestige</p>
+      <p style="margin: 0;"><strong>Groupe Espace Prestige</strong><br />Fondatrice & Designer principale<br />Espace Prestige</p>
       <p style="margin: 0; color: #5F2C91;">contact@espaceprestigesenegal.com</p>
     </div>
   `

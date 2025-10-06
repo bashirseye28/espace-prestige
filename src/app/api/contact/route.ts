@@ -41,7 +41,7 @@ export async function POST(req: Request) {
 
       <div style="font-size: 14px; color: #222;">
         <p style="margin: 0 0 6px;">Cordialement,</p>
-        <p style="font-weight: 600; margin: 0;">Amina</p>
+        <p style="font-weight: 600; margin: 0;">Gropue Espace Prestige</p>
         <p style="margin: 0;">Fondatrice & Designer principale</p>
         <p style="margin: 0 0 16px;">Espace Prestige — Architecture & Design Studio</p>
 
