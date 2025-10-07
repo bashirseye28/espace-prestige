@@ -49,7 +49,6 @@ export default function ProjectsPage() {
       <ProjectsGallery />
       <ProjectsQuote />
       <ProjectsCTA />
-+
       {/* <ProjectsGrid /> */}
     </>
   )
